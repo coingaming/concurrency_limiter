@@ -17,7 +17,7 @@ With a name:
 ```elixir
 ConcurrencyLimiter.start_link(name: MyLimiter, max_concurrency: 5)
 
-ConcurrencyLimiter.run(MyLimiter, 5000, fn ->
+ConcurrencyLimiter.run!(MyLimiter, 5000, fn ->
   # Do some work
 end)
 
@@ -30,7 +30,7 @@ Supervisor.start_link([
   {ConcurrencyLimiter, name: LimiterC, max_concurrency: 50}
 ], strategy: :one_for_one)
 
-ConcurrencyLimiter.run(LimiterB, 5000, fn ->
+ConcurrencyLimiter.run!(LimiterB, 5000, fn ->
   # Do some work
 end)
 ```

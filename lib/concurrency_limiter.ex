@@ -12,7 +12,7 @@ defmodule ConcurrencyLimiter do
       iex> {:ok, pid} = ConcurrencyLimiter.start_link(max_concurrency: 5)
       {:ok, pid}
 
-      iex> ConcurrencyLimiter.run(pid, 5000, fn ->
+      iex> ConcurrencyLimiter.run!(pid, 5000, fn ->
         # Do some work
         :ok
       end)
@@ -22,7 +22,7 @@ defmodule ConcurrencyLimiter do
       iex> {:ok, pid} = ConcurrencyLimiter.start_link(name: MyLimiter, max_concurrency: 5)
       {:ok, pid}
 
-      iex> ConcurrencyLimiter.run(MyLimiter, 5000, fn ->
+      iex> ConcurrencyLimiter.run!(MyLimiter, 5000, fn ->
         # Do some work
         :ok
       end)
@@ -34,6 +34,12 @@ defmodule ConcurrencyLimiter do
         {ConcurrencyLimiter, name: LimiterB, max_concurrency: 10},
         {ConcurrencyLimiter, name: LimiterC, max_concurrency: 50}
       ], strategy: :one_for_one)
+
+      iex> ConcurrencyLimiter.run!(LimiterB, 5000, fn ->
+        # Do some work
+        :ok
+      end)
+      :ok
   """
 
   @behaviour NimblePool
