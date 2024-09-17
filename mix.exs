@@ -28,7 +28,8 @@ defmodule ConcurrencyLimiter.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:nimble_pool, "~> 1.0"}
+      {:nimble_pool, "~> 1.0"},
+      {:ex_doc, ">= 0.0.0", only: [:docs]}
     ]
   end
 
