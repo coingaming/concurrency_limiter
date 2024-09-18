@@ -1,7 +1,7 @@
 defmodule ConcurrencyLimiter.MixProject do
   use Mix.Project
 
-  @version "1.0.0"
+  @version "1.0.1"
   @url "https://github.com/coingaming/concurrency_limiter"
 
   def project do
